@@ -1,7 +1,8 @@
 import { CommandHandler, ICommand, ICommandHandler } from '@nestjs/cqrs';
-import { Programming } from '../../domain/agregates/programming';
 import { ProgrammingVO } from '../../value-objects/programming-id.vo';
-import { BadRequestException, InternalServerErrorException } from '@nestjs/common';
+import { BadRequestException, InternalServerErrorException, Inject } from '@nestjs/common';
+import { ProgrammingInfraestructure } from '../../infraestructure/programming.infraestructure';
+import { ProgrammingRepository } from '../../domain/repositories/programming.repository';
 
 export class UpdateProgrammingCommand implements ICommand {
     constructor(
@@ -13,33 +14,30 @@ export class UpdateProgrammingCommand implements ICommand {
 }
 
 @CommandHandler(UpdateProgrammingCommand)
-export class UpdateProgrammingCommandHandler implements ICommandHandler<UpdateProgrammingCommand, any>{
+export class UpdateProgrammingCommandHandler implements ICommandHandler<UpdateProgrammingCommand, void>{
+    constructor(@Inject(ProgrammingInfraestructure) private repository: ProgrammingRepository) { }
 
-    private findProgrammingById(programmingId: string): Programming {
+    async execute(command: UpdateProgrammingCommand): Promise<void> {
+        const programmingIdResult = ProgrammingVO.create(command.programmingId);
 
-        const programmingIdResult = ProgrammingVO.create(programmingId);
-
-        if(programmingIdResult.isErr()){
-            throw new BadRequestException(programmingIdResult.error.message); 
+        if (programmingIdResult.isErr()) {
+            throw new BadRequestException(programmingIdResult.error.message, programmingIdResult.error.name);
         }
 
-        const programmingVo = programmingIdResult.value;
+        const findProgrammingResult = await this.repository.findById(programmingIdResult.value.value);
 
-        return new Programming({
-            programmingId: programmingVo,
-            tourId: '32460671-7431-4d36-bea7-688297a276a1',
-            description: "Descripcion de tour",
-            date: new Date('02-02-2020')
-        });
-    }
+        if (findProgrammingResult.isErr()) {
+            throw new InternalServerErrorException(findProgrammingResult.error.message, findProgrammingResult.error.name);
+        }
 
-    execute(command: UpdateProgrammingCommand): Promise<any> {
-        console.log(command);
-        const proggraming = this.findProgrammingById(command.programmingId);
+        const proggraming = findProgrammingResult.value;
         proggraming.update({
             description: command.description,
             duration: command.duration
         })
-        return Promise.resolve();
+
+        await this.repository.save(proggraming);
+
+        return null;
     }
 }

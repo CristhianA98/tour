@@ -6,6 +6,7 @@ import { ProgrammingController } from './backoffice/bounded-contexts/tour-progra
 import { DeleteProgrammingCommandHandler } from './backoffice/bounded-contexts/tour-programming/application/commands/delete-programming.command';
 import { UpdateProgrammingCommandHandler } from './backoffice/bounded-contexts/tour-programming/application/commands/update-programming.command';
 import { ProgrammingInfraestructure } from './backoffice/bounded-contexts/tour-programming/infraestructure/programming.infraestructure';
+import { ListProgrammingQueryHandler } from './backoffice/bounded-contexts/tour-programming/application/queries/list-programming.query';
 
 const modules = [
   CqrsModule
@@ -17,6 +18,7 @@ const application = [
   CreateProggramingCommandHandler,
   DeleteProgrammingCommandHandler,
   UpdateProgrammingCommandHandler,
+  ListProgrammingQueryHandler
 ]
 
 const infraestructure = [

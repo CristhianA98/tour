@@ -1,7 +1,4 @@
 import { AggregateRoot } from '@nestjs/cqrs';
-import { Requeriment } from './requeriment';
-import { Equipment } from './equipment';
-import { Place } from './places';
 import { ProgrammingVO } from '../../value-objects/programming-id.vo';
 
 export type ProgrammingEssential = {
@@ -51,7 +48,8 @@ export class Programming extends AggregateRoot {
             active: this.active,
             createdAt: this.createdAt,
             updatedAt: this.updatedAt,
-            deletedAt: this.deletedAt
+            deletedAt: this.deletedAt,
+            duration: this.duration
         }
     }
 

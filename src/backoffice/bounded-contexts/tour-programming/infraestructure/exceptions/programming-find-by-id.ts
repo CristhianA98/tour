@@ -10,3 +10,14 @@ export class ProgrammingFindByIdDatabaseException extends InfraestructureExcepti
         return `ProgrammingFindByIdDatabaseException: ${message}`
     }
 }
+
+export class ProgrammingNotFoundException extends InfraestructureException {
+    constructor() {
+        super(ProgrammingNotFoundException.getMessage());
+        this.name = InfraestructureExceptionCode.PROGRAMMING_NOT_FOUND_EXCEPTION;
+    }
+
+    static getMessage() {
+        return `ProgrammingNotFoundException`
+    }
+}

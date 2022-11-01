@@ -1,9 +1,9 @@
 import { CommandHandler, ICommand, ICommandHandler } from '@nestjs/cqrs';
 import { ProgrammingVO } from '../../value-objects/programming-id.vo';
 import { v4 as uuidv4 } from 'uuid';
-import { BadRequestException, Inject, NotFoundException, InternalServerErrorException } from '@nestjs/common';
-import { ProgrammingRepository } from '../../../../../../dist/backoffice/bounded-contexts/tour-programming/domain/repositories/programming.repository';
+import { BadRequestException, Inject, InternalServerErrorException } from '@nestjs/common';
 import { ProgrammingInfraestructure } from '../../infraestructure/programming.infraestructure';
+import { ProgrammingRepository } from '../../domain/repositories/programming.repository';
 
 
 export class DeleteProgrammingCommand implements ICommand {

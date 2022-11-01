@@ -1,6 +1,7 @@
 import { Programming, ProgrammingProperties } from '../../domain/agregates/programming';
 import { ProgrammingEntity } from '../entities/programming.entity';
 import { ProgrammingVO } from '../../value-objects/programming-id.vo';
+import { ProgrammingListResult } from '../../application/dtos/programming-list-result.dto';
 export class ProgrammingDTO {
 
     static fromDomainToData(programming: Programming): ProgrammingEntity {
@@ -13,6 +14,7 @@ export class ProgrammingDTO {
         programmingEntity.createdAt = programming.properties().createdAt;
         programmingEntity.updatedAt = programming.properties().updatedAt;
         programmingEntity.deletedAt = programming.properties().deletedAt;
+        programmingEntity.duration = programming.properties().duration;
 
         return programmingEntity;
     }
@@ -26,12 +28,24 @@ export class ProgrammingDTO {
                 programmingId: result.value,
                 tourId: programmingEntity.tourId,
                 description: programmingEntity.description,
-                date: programmingEntity.date
+                date: programmingEntity.date,
+                duration: programmingEntity.duration
             }
             return new Programming(programmingProperties);
         } else {
             return null;
         }
 
+    }
+
+    static fromDataToApplication(programmingEntity: ProgrammingEntity[]): ProgrammingListResult[] {
+
+        return programmingEntity.map((programmingEntity) => ({
+            programmingId: programmingEntity.programmingId,
+            tourId: programmingEntity.tourId,
+            description: programmingEntity.description,
+            date: programmingEntity.date,
+            duration: programmingEntity.duration
+        }))
     }
 }

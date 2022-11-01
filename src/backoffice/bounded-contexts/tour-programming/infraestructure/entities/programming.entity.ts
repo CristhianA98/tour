@@ -18,4 +18,7 @@ export class ProgrammingEntity extends BaseEntity {
     @Column({ type: "boolean" })
     active: boolean;
 
+    @Column({ type: 'varchar', length: 255, nullable: true })
+    duration: string;
+
 }
