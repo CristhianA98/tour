@@ -1,5 +1,5 @@
 import { AggregateRoot } from '@nestjs/cqrs';
-import { ProgrammingVO } from '../../value-objects/programming-id.vo';
+import { ProgrammingVO } from '../value-objects/programming-id.vo';
 
 export type ProgrammingEssential = {
     readonly programmingId: ProgrammingVO;

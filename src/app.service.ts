@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { DataSource, EntityManager } from 'typeorm';
 import { ProgrammingEntity } from './backoffice/bounded-contexts/tour-programming/infraestructure/entities/programming.entity';
+import { RegardEntity } from './backoffice/bounded-contexts/tour-programming/infraestructure/entities/regard.entity';
 
 let manager: EntityManager;
 
@@ -22,7 +23,7 @@ export class AppService {
   }
 
   async onModuleInit() {
-    const entities = [ProgrammingEntity];
+    const entities = [ProgrammingEntity, RegardEntity];
     const config = this.dbConfig();
 
     this.dataSource = await new DataSource({

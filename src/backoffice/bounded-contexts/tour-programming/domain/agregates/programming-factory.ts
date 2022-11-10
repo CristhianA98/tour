@@ -1,4 +1,4 @@
-import { ProgrammingVO } from '../../value-objects/programming-id.vo';
+import { ProgrammingVO } from '../value-objects/programming-id.vo';
 import { Programming } from './programming';
 import { Result, ok, err } from 'neverthrow';
 import { ProgrammingDescriptionEmptyException, ProgrammingWordsEnoughException } from '../exceptions/programming-description';

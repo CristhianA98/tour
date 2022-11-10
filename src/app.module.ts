@@ -7,22 +7,36 @@ import { DeleteProgrammingCommandHandler } from './backoffice/bounded-contexts/t
 import { UpdateProgrammingCommandHandler } from './backoffice/bounded-contexts/tour-programming/application/commands/update-programming.command';
 import { ProgrammingInfraestructure } from './backoffice/bounded-contexts/tour-programming/infraestructure/programming.infraestructure';
 import { ListProgrammingQueryHandler } from './backoffice/bounded-contexts/tour-programming/application/queries/list-programming.query';
+import { RegardController } from './backoffice/bounded-contexts/tour-programming/interfaces/http/regard.controller';
+import { CreateRegardCommandHandler } from './backoffice/bounded-contexts/tour-programming/application/commands/create-regard.command';
+import { DeleteRegardCommandHandler } from './backoffice/bounded-contexts/tour-programming/application/commands/delete-regard.command';
+import { UpdateRegardCommandHandler } from './backoffice/bounded-contexts/tour-programming/application/commands/update-regard.command';
+import { ListRegardQueryHandler } from './backoffice/bounded-contexts/tour-programming/application/queries/list-regard.query';
+import { RegardInfraestructure } from './backoffice/bounded-contexts/tour-programming/infraestructure/Regard.infraestructure';
 
 const modules = [
   CqrsModule
 ];
+
 const controllers = [
-  ProgrammingController
+  ProgrammingController,
+  RegardController
 ];
+
 const application = [
   CreateProggramingCommandHandler,
   DeleteProgrammingCommandHandler,
   UpdateProgrammingCommandHandler,
-  ListProgrammingQueryHandler
+  ListProgrammingQueryHandler,
+  CreateRegardCommandHandler,
+  DeleteRegardCommandHandler,
+  UpdateRegardCommandHandler,
+  ListRegardQueryHandler
 ]
 
 const infraestructure = [
-  ProgrammingInfraestructure
+  ProgrammingInfraestructure,
+  RegardInfraestructure
 ]
 
 @Module({

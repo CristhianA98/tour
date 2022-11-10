@@ -1,7 +1,7 @@
 import { Result, err, ok } from 'neverthrow'
 import { validate as uuidValidate } from 'uuid';
 import { ValueObject } from './value-object';
-import { TourIdInvalidException } from '../domain/exceptions/tour-id';
+import { TourIdInvalidException } from '../exceptions/tour-id';
 
 interface TourProps {
     value: string

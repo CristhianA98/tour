@@ -1,5 +1,5 @@
 import { CommandHandler, ICommand, ICommandHandler } from '@nestjs/cqrs';
-import { ProgrammingVO } from '../../value-objects/programming-id.vo';
+import { ProgrammingVO } from '../../domain/value-objects/programming-id.vo';
 import { v4 as uuidv4 } from 'uuid';
 import { BadRequestException, Inject, InternalServerErrorException } from '@nestjs/common';
 import { ProgrammingInfraestructure } from '../../infraestructure/programming.infraestructure';

@@ -1,8 +1,8 @@
-import { CommandHandler, ICommand, ICommandHandler } from '@nestjs/cqrs';
-import { ProgrammingVO } from '../../value-objects/programming-id.vo';
+import { ProgrammingVO } from '../../domain/value-objects/programming-id.vo';
 import { BadRequestException, InternalServerErrorException, Inject } from '@nestjs/common';
 import { ProgrammingInfraestructure } from '../../infraestructure/programming.infraestructure';
 import { ProgrammingRepository } from '../../domain/repositories/programming.repository';
+import { CommandHandler, ICommand, ICommandHandler } from '@nestjs/cqrs';
 
 export class UpdateProgrammingCommand implements ICommand {
     constructor(

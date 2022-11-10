@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { ProgrammingVO } from '../../value-objects/programming-id.vo';
+import { ProgrammingVO } from '../value-objects/programming-id.vo';
 
 export type EquipmentProperties = {
     readonly programmingId: ProgrammingVO;

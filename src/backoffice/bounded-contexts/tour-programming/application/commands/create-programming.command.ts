@@ -1,9 +1,9 @@
 import { CommandHandler, ICommand, ICommandHandler } from "@nestjs/cqrs";
 import { v4 as uuidv4 } from 'uuid';
-import { ProgrammingVO } from '../../value-objects/programming-id.vo';
+import { ProgrammingVO } from '../../domain/value-objects/programming-id.vo';
 import { ProggramingFactory } from '../../domain/agregates/programming-factory';
 import { InternalServerErrorException, BadRequestException, Inject } from '@nestjs/common';
-import { tourVO } from '../../value-objects/tour-id.vo';
+import { tourVO } from '../../domain/value-objects/tour-id.vo';
 import { ProgrammingInfraestructure } from '../../infraestructure/programming.infraestructure';
 import { ProgrammingRepository } from "../../domain/repositories/programming.repository";
 import { ProgrammingCreateResponse, ProgrammingResponse } from '../dtos/programming-response.dto';

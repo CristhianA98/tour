@@ -1,7 +1,7 @@
 import { Result, err, ok } from 'neverthrow'
 import { validate as uuidValidate } from 'uuid';
 import { ValueObject } from './value-object';
-import { ProgrammingIdInvalidException } from '../domain/exceptions/programing-id';
+import { ProgrammingIdInvalidException } from '../exceptions/programing-id';
 
 interface ProgrammingProps {
     value: string

@@ -1,8 +1,7 @@
 import { IQuery, IQueryHandler, QueryHandler } from "@nestjs/cqrs";
 import { Inject, BadRequestException } from '@nestjs/common';
 import { ProgrammingInfraestructure } from '../../infraestructure/programming.infraestructure';
-import { ProgrammingVO } from '../../value-objects/programming-id.vo';
-import { tourVO } from '../../value-objects/tour-id.vo';
+import { tourVO } from '../../domain/value-objects/tour-id.vo';
 import { ProgrammingRepository } from "../../domain/repositories/programming.repository";
 import { ProgrammingListResult } from '../dtos/programming-list-result.dto';
 

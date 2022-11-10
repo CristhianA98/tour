@@ -1,6 +1,6 @@
 import { Programming, ProgrammingProperties } from '../../domain/agregates/programming';
 import { ProgrammingEntity } from '../entities/programming.entity';
-import { ProgrammingVO } from '../../value-objects/programming-id.vo';
+import { ProgrammingVO } from '../../domain/value-objects/programming-id.vo';
 import { ProgrammingListResult } from '../../application/dtos/programming-list-result.dto';
 export class ProgrammingDTO {
 
