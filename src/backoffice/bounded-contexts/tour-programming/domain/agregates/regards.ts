@@ -1,13 +1,20 @@
 import { AggregateRoot } from '@nestjs/cqrs';
 import { UuidVO } from '../value-objects/uuid.vo';
+import { NumberVO } from '../value-objects/number.vo';
+import { RegardDeletedEvent } from '../events/regard-deleted';
+import { RegardUpdatedEvent } from '../events/regard-updated';
 
 export type RegardEsssential = {
     readonly regardId: UuidVO;
     readonly programmingId: UuidVO;
     readonly date: Date;
+    readonly duration: NumberVO;
 }
 
-export type RegardUpdate = Partial<Omit<RegardEsssential, 'regardId,programmingId'>>
+export type RegardUpdate = Partial<
+    Omit<RegardEsssential, 'regardId' | 'programmingId' | 'duration'>
+    & { duration: NumberVO }
+>
 
 export type RegardProperties = Required<RegardEsssential>
 
@@ -15,6 +22,7 @@ export class Regard extends AggregateRoot {
     private readonly regardId: UuidVO;
     private readonly programmingId: UuidVO;
     private date: Date;
+    private duration: NumberVO;
     private active: boolean;
     private readonly createdAt: Date;
     private updatedAt: Date;
@@ -33,6 +41,7 @@ export class Regard extends AggregateRoot {
             programmingId: this.programmingId,
             date: this.date,
             active: this.active,
+            duration: this.duration,
             createdAt: this.createdAt,
             updatedAt: this.updatedAt,
             deletedAt: this.deletedAt
@@ -40,13 +49,23 @@ export class Regard extends AggregateRoot {
     }
 
     update(fields: RegardUpdate) {
+
+        const durationResult = NumberVO.create(Number(fields.duration));
+        if (durationResult.isOk()) {
+            this.duration = durationResult.value;
+        }
+
         Object.assign(this, fields)
         this.updatedAt = new Date();
+
+        this.apply(Object.assign(new RegardUpdatedEvent(), this.properties()));
     }
 
     delete() {
         this.active = false;
         this.deletedAt = new Date()
+
+        this.apply(Object.assign(new RegardDeletedEvent(), this.properties()));
     }
 
 }

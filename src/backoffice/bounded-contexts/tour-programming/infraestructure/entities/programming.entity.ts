@@ -21,4 +21,8 @@ export class ProgrammingEntity extends BaseEntity {
     @Column({ type: 'varchar', length: 255, nullable: true })
     duration: string;
 
+    @Column({ type: 'int', nullable: true })
+    totalHours: number
+
+
 }

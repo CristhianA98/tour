@@ -12,11 +12,17 @@ import { CreateRegardCommandHandler } from './backoffice/bounded-contexts/tour-p
 import { DeleteRegardCommandHandler } from './backoffice/bounded-contexts/tour-programming/application/commands/delete-regard.command';
 import { UpdateRegardCommandHandler } from './backoffice/bounded-contexts/tour-programming/application/commands/update-regard.command';
 import { ListRegardQueryHandler } from './backoffice/bounded-contexts/tour-programming/application/queries/list-regard.query';
-import { RegardInfraestructure } from './backoffice/bounded-contexts/tour-programming/infraestructure/Regard.infraestructure';
+import { RegardInfraestructure } from './backoffice/bounded-contexts/tour-programming/infraestructure/regard.infraestructure';
+import { RegardsFactory } from './backoffice/bounded-contexts/tour-programming/domain/agregates/regards-factory';
+import { RegardCreatedHandler } from './backoffice/bounded-contexts/tour-programming/application/events/regard-created';
+import { RegardDeletedHandler } from './backoffice/bounded-contexts/tour-programming/application/events/regard-deleted';
+import { RegardUpdatedHandler } from './backoffice/bounded-contexts/tour-programming/application/events/regard-updated';
 
 const modules = [
   CqrsModule
 ];
+
+const domain = [RegardsFactory]
 
 const controllers = [
   ProgrammingController,
@@ -28,10 +34,15 @@ const application = [
   DeleteProgrammingCommandHandler,
   UpdateProgrammingCommandHandler,
   ListProgrammingQueryHandler,
+
   CreateRegardCommandHandler,
   DeleteRegardCommandHandler,
   UpdateRegardCommandHandler,
-  ListRegardQueryHandler
+  ListRegardQueryHandler,
+
+  RegardCreatedHandler,
+  RegardDeletedHandler,
+  RegardUpdatedHandler
 ]
 
 const infraestructure = [
@@ -42,6 +53,6 @@ const infraestructure = [
 @Module({
   imports: [...modules],
   controllers: [...controllers],
-  providers: [AppService, ...application, ...infraestructure],
+  providers: [AppService, ...domain, ...application, ...infraestructure],
 })
 export class AppModule { }

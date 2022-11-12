@@ -15,6 +15,7 @@ export class ProgrammingDTO {
         programmingEntity.updatedAt = programming.properties().updatedAt;
         programmingEntity.deletedAt = programming.properties().deletedAt;
         programmingEntity.duration = programming.properties().duration;
+        programmingEntity.totalHours = programming.properties().totalHours;
 
         return programmingEntity;
     }
@@ -29,7 +30,8 @@ export class ProgrammingDTO {
                 tourId: programmingEntity.tourId,
                 description: programmingEntity.description,
                 date: programmingEntity.date,
-                duration: programmingEntity.duration
+                duration: programmingEntity.duration,
+                totalHours: programmingEntity.totalHours
             }
             return new Programming(programmingProperties);
         } else {
@@ -45,7 +47,8 @@ export class ProgrammingDTO {
             tourId: programmingEntity.tourId,
             description: programmingEntity.description,
             date: programmingEntity.date,
-            duration: programmingEntity.duration
+            duration: programmingEntity.duration,
+            totalHours: programmingEntity.totalHours
         }))
     }
 }

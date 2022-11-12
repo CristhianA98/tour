@@ -16,9 +16,9 @@ export class RegardController {
 
     @Post()
     async create(@Body() body: CreateRegardgDTO) {
-        const { programmingId, date } = body;
+        const { programmingId, date, duration } = body;
 
-        const command = new CreateRegardCommand(programmingId, date);
+        const command = new CreateRegardCommand(programmingId, date, duration);
         const response = await this.commandBus.execute(command);
 
         return response;
@@ -37,9 +37,9 @@ export class RegardController {
     @Put(":regardId")
     async update(@Param() params: UpdateRegardDTO, @Body() body: any) {
         const { regardId } = params;
-        const { date } = body;
+        const { date, duration } = body;
 
-        const command = new UpdateRegardCommand(regardId, date);
+        const command = new UpdateRegardCommand(regardId, date, duration);
         await this.commandBus.execute(command);
 
         return "ok Actualizado"

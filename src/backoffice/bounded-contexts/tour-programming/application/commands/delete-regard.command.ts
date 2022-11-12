@@ -2,8 +2,8 @@ import { CommandHandler, ICommand, ICommandHandler } from '@nestjs/cqrs';
 import { v4 as uuidv4 } from 'uuid';
 import { BadRequestException, Inject, InternalServerErrorException } from '@nestjs/common';
 import { UuidVO } from '../../domain/value-objects/uuid.vo';
-import { RegardInfraestructure } from '../../infraestructure/Regard.infraestructure';
-import { RegardRepository } from '../../domain/repositories/Regard.repository';
+import { RegardInfraestructure } from '../../infraestructure/regard.infraestructure';
+import { RegardRepository } from '../../domain/repositories/regard.repository';
 
 
 export class DeleteRegardCommand implements ICommand {
@@ -35,6 +35,7 @@ export class DeleteRegardCommandHandler implements ICommandHandler<DeleteRegardC
 
         const regard = findProgrammingResult.value;
         regard.delete();
+        regard.commit();
 
         await this.repository.save(regard);
 

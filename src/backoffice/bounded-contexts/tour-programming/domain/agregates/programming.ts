@@ -11,12 +11,14 @@ export type ProgrammingEssential = {
 export type ProgrammingOptional = {
     readonly duration: string;
     readonly active: boolean;
+    readonly totalHours: number;
 }
 
 export type ProgrammingUpdate = {
     readonly date: Date;
     readonly description: string;
     readonly duration: string;
+    readonly totalHours: number;
 }
 
 export type ProgrammingProperties = Required<ProgrammingEssential> & Partial<ProgrammingOptional>;
@@ -28,6 +30,7 @@ export class Programming extends AggregateRoot {
     private description: string;
     private duration: string;
     private active: boolean;
+    private totalHours: number = 0;
     private readonly createdAt: Date;
     private updatedAt: Date;
     private deletedAt: Date;
@@ -46,6 +49,7 @@ export class Programming extends AggregateRoot {
             date: this.date,
             description: this.description,
             active: this.active,
+            totalHours: this.totalHours,
             createdAt: this.createdAt,
             updatedAt: this.updatedAt,
             deletedAt: this.deletedAt,

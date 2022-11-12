@@ -4,4 +4,5 @@ export class ProgrammingListResult {
     readonly description: string
     readonly date: Date
     readonly duration: string
+    readonly totalHours: number
 }

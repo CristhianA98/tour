@@ -12,6 +12,9 @@ export class RegardEntity extends BaseEntity {
     @Column({ type: 'datetime' })
     date: Date;
 
+    @Column({ type: 'int' })
+    duration: number;
+
     @Column({ type: "boolean" })
     active: boolean;
 }

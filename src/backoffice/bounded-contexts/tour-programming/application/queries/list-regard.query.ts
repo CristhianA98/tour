@@ -3,8 +3,8 @@ import { Inject, BadRequestException } from '@nestjs/common';
 import { RegardListResult } from '../dtos/regard-list-result.dto';
 import { UuidVO } from '../../domain/value-objects/uuid.vo';
 import { RegardsFactory } from '../../domain/agregates/regards-factory';
-import { RegardRepository } from "../../domain/repositories/Regard.repository";
-import { RegardInfraestructure } from "../../infraestructure/Regard.infraestructure";
+import { RegardRepository } from "../../domain/repositories/regard.repository";
+import { RegardInfraestructure } from "../../infraestructure/regard.infraestructure";
 
 export class ListRegardQuery implements IQuery {
     constructor(public readonly programmingId: string) { }
