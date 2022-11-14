@@ -2,8 +2,16 @@ import { Injectable } from '@nestjs/common';
 import { DataSource, EntityManager } from 'typeorm';
 import { ProgrammingEntity } from './backoffice/bounded-contexts/tour-programming/infraestructure/entities/programming.entity';
 import { RegardEntity } from './backoffice/bounded-contexts/tour-programming/infraestructure/entities/regard.entity';
+import * as mongoose from 'mongoose';
 
 let manager: EntityManager;
+
+export interface IDBConfigMongo {
+  user: string;
+  pass: string;
+  host: string;
+  database: string;
+}
 
 @Injectable()
 export class AppService {
@@ -19,6 +27,15 @@ export class AppService {
       password: '123456',
       synchronize: true,
       logging: false
+    }
+  }
+
+  private dbConfigMongo(): IDBConfigMongo {
+    return {
+      user: "Cristhian",
+      pass: "KmJJCxBeFYZvLEpH",
+      database: "eventsourcing",
+      host: "sourcing.n2ocsvr.mongodb.net"
     }
   }
 
@@ -39,6 +56,15 @@ export class AppService {
         process.exit(1);
       })
     manager = (this.dataSource as DataSource).manager;
+
+    const configMongo = this.dbConfigMongo();
+
+    try {
+      await mongoose.connect(`mongodb+srv://${configMongo.user}:${configMongo.pass}@${configMongo.host}/${configMongo.database}?retryWrites=true&w=majority`);
+    } catch (error) {
+      console.log(error);
+      process.exit(1);
+    }
   }
 
   static get manager() {

@@ -34,8 +34,8 @@ export class UpdateProgrammingCommandHandler implements ICommandHandler<UpdatePr
         proggraming.update({
             description: command.description,
             duration: command.duration
+            
         })
-
         await this.repository.save(proggraming);
 
         return null;

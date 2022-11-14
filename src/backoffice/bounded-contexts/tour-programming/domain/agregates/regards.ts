@@ -13,7 +13,7 @@ export type RegardEsssential = {
 
 export type RegardUpdate = Partial<
     Omit<RegardEsssential, 'regardId' | 'programmingId' | 'duration'>
-    & { duration: NumberVO }
+    & { duration: number }
 >
 
 export type RegardProperties = Required<RegardEsssential>
@@ -50,13 +50,12 @@ export class Regard extends AggregateRoot {
 
     update(fields: RegardUpdate) {
 
-        const durationResult = NumberVO.create(Number(fields.duration));
+        Object.assign(this, fields)
+        this.updatedAt = new Date();
+        const durationResult = NumberVO.create(fields.duration);
         if (durationResult.isOk()) {
             this.duration = durationResult.value;
         }
-
-        Object.assign(this, fields)
-        this.updatedAt = new Date();
 
         this.apply(Object.assign(new RegardUpdatedEvent(), this.properties()));
     }

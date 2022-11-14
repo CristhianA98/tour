@@ -17,6 +17,10 @@ import { RegardsFactory } from './backoffice/bounded-contexts/tour-programming/d
 import { RegardCreatedHandler } from './backoffice/bounded-contexts/tour-programming/application/events/regard-created';
 import { RegardDeletedHandler } from './backoffice/bounded-contexts/tour-programming/application/events/regard-deleted';
 import { RegardUpdatedHandler } from './backoffice/bounded-contexts/tour-programming/application/events/regard-updated';
+import { EventSourcingRegardCreatedHandler } from './backoffice/bounded-contexts/tour-programming/application/events/sourcing/evt-regard-created';
+import { EventSourcingInfraestructure } from './backoffice/bounded-contexts/tour-programming/infraestructure/event-sourcing.infraestructure';
+import { EventSourcingRegardUpdatedHandler } from './backoffice/bounded-contexts/tour-programming/application/events/sourcing/evt-regard-updated';
+import { EventSourcingRegardDeletedHandler } from './backoffice/bounded-contexts/tour-programming/application/events/sourcing/evt-regard-deleted';
 
 const modules = [
   CqrsModule
@@ -42,12 +46,17 @@ const application = [
 
   RegardCreatedHandler,
   RegardDeletedHandler,
-  RegardUpdatedHandler
+  RegardUpdatedHandler,
+
+  EventSourcingRegardCreatedHandler,
+  EventSourcingRegardUpdatedHandler,
+  EventSourcingRegardDeletedHandler
 ]
 
 const infraestructure = [
   ProgrammingInfraestructure,
-  RegardInfraestructure
+  RegardInfraestructure,
+  EventSourcingInfraestructure
 ]
 
 @Module({

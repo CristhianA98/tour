@@ -3,7 +3,7 @@ import { Result, ok, err } from 'neverthrow';
 import { ProgrammingNotFoundException } from './exceptions/programming-find-by-id';
 import { AppService } from "src/app.service";
 import { ProgrammingListByTourException } from './exceptions/programming-list-by-tour';
-import { RegardRepository } from "../domain/repositories/Regard.repository";
+import { RegardRepository } from "../domain/repositories/regard.repository";
 import { RegardFindByProgrammingIdDatabaseException, RegardNotFoundException } from './exceptions/regard-find-by-id';
 import { RegardCreateDatabaseException } from "./exceptions/regard-create";
 import { Regard } from '../domain/agregates/regards';

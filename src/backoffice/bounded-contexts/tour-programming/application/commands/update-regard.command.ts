@@ -9,7 +9,7 @@ export class UpdateRegardCommand implements ICommand {
     constructor(
         public readonly regardId: string,
         public readonly date: Date,
-        public readonly duration: NumberVO
+        public readonly duration: number
     ) { }
 }
 

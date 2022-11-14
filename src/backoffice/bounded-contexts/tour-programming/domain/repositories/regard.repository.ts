@@ -1,4 +1,4 @@
-import { RegardCreateResult, RegardFindByIdResult, RegardFindByProgrammingIdResult } from '../../infraestructure/Regard.infraestructure';
+import { RegardCreateResult, RegardFindByIdResult, RegardFindByProgrammingIdResult } from '../../infraestructure/regard.infraestructure';
 import { Regard } from '../agregates/regards';
 
 export interface RegardRepository {

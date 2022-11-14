@@ -1,0 +1,16 @@
+yarn run v1.22.19
+$ nest start
+[32m[Nest] 20184  - [39m12/11/2022, 16:06:28 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 20184  - [39m12/11/2022, 16:06:28 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCqrsModule dependencies initialized[39m[38;5;3m +24ms[39m
+[32m[Nest] 20184  - [39m12/11/2022, 16:06:28 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 20184  - [39m12/11/2022, 16:06:28 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mProgrammingController {/programming}:[39m[38;5;3m +5ms[39m
+[32m[Nest] 20184  - [39m12/11/2022, 16:06:28 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/programming, POST} route[39m[38;5;3m +2ms[39m
+[32m[Nest] 20184  - [39m12/11/2022, 16:06:28 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/programming/:programmingId, DELETE} route[39m[38;5;3m +2ms[39m
+[32m[Nest] 20184  - [39m12/11/2022, 16:06:28 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/programming/:programmingId, PUT} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 20184  - [39m12/11/2022, 16:06:28 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/programming/:tourId, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 20184  - [39m12/11/2022, 16:06:28 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mRegardController {/regard}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 20184  - [39m12/11/2022, 16:06:28 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/regard, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 20184  - [39m12/11/2022, 16:06:28 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/regard/:regardId, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20184  - [39m12/11/2022, 16:06:28 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/regard/:regardId, PUT} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 20184  - [39m12/11/2022, 16:06:28 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/regard/:programmingId, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20184  - [39m12/11/2022, 16:06:28 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +146ms[39m

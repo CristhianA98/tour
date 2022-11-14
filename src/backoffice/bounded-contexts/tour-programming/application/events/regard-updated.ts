@@ -17,6 +17,7 @@ export class RegardUpdatedHandler implements IEventHandler<RegardUpdatedEvent>{
     async handle(event: RegardUpdatedEvent) {
 
         const regardResult = await this.repositoryRegard.listByProgrammingId(event.programmingId.value);
+
         if (regardResult.isErr()) {
             throw new InternalServerErrorException(
                 regardResult.error.message,
@@ -47,8 +48,6 @@ export class RegardUpdatedHandler implements IEventHandler<RegardUpdatedEvent>{
                 updateResult.error.name
             );
         }
-
-
 
     }
 }
